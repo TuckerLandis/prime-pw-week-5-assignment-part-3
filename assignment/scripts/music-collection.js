@@ -12,12 +12,12 @@ return collection[collection.length - 1];
 }
 
 
-addToCollection('Selected Public Works Vol. 5', 'Lightbath', 2020);
-addToCollection('Gunfighter Ballads and Trail Songs', 'Marty Robbins', 1959);
-addToCollection('Selected Public Works Vol. 4', 'Lightbath', 2019);
-addToCollection('Toy Beats', 'Splitta', 2020);
-addToCollection('Nice Dog', 'Jon Corbett', 2019);
-addToCollection('Dust Bowl Ballads', 'Woody Guthrie', 1940);
-addToCollection('déchets inutiles', 'Watson', 2020);
+console.log(addToCollection('Selected Public Works Vol. 5', 'Lightbath', 2020));
+console.log(addToCollection('Gunfighter Ballads and Trail Songs', 'Marty Robbins', 1959));
+console.log(addToCollection('Selected Public Works Vol. 4', 'Lightbath', 2019));
+console.log(addToCollection('Toy Beats', 'Splitta', 2020));
+console.log(addToCollection('Nice Dog', 'Jon Corbett', 2019));
+console.log(addToCollection('Dust Bowl Ballads', 'Woody Guthrie', 1940));
+console.log(addToCollection('déchets inutiles', 'Watson', 2020));
 
 console.log(collection);
