@@ -21,3 +21,14 @@ console.log(addToCollection('Dust Bowl Ballads', 'Woody Guthrie', 1940));
 console.log(addToCollection('déchets inutiles', 'Watson', 2020));
 
 console.log(collection);
+
+function showCollection(array) {
+  console.log('i have ' + array.length + ' records: ');
+  for (let item of array) {
+    console.log( item.title + ' by ' + item.artist + ', published in ' + item.yearPublished );
+  }
+  return collection;
+  // end looop
+} // end showCollection
+
+showCollection(collection);
