@@ -32,3 +32,42 @@ function showCollection(array) {
 } // end showCollection
 
 showCollection(collection);
+
+/*
+function findByArtist( artist ) {
+  console.log('Finding Artist: ' + artist);
+  let findArr = [];
+  for (let album of collection) {
+    if (collection.artist == artist) {
+      findArr.push(album);
+      return findArr;
+    } // end if
+    else {
+      return findArr;
+    } // end else
+  } //end loop
+} // end findByArtist*/
+
+
+function findByArtist(artist){
+  console.log('Finding Artist: ' + artist);
+  let i = 0;
+  let foundArr = [];
+    while (i < (collection.length - 1)) {
+    let p = collection[i];
+    let foundArtist = collection[i].artist;
+    if (foundArtist === artist) {
+      foundArr.push(p);
+      i++;
+    } // end if
+    else {
+  i++;
+    } // end else
+  } // end loop
+  return foundArr;
+} // end findByArtist
+
+
+console.log(findByArtist('Splitta'));
+console.log(findByArtist('Lightbath'));
+console.log(findByArtist('Harrison BDP'));
