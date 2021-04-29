@@ -1,15 +1,15 @@
 console.log('***** Music Collection *****');
 
 let collection = [];
+let pushTracks = [];
 
-function addToCollection (title, artist, yearPublished, trackName, trackDuration){
-  console.log('in addToCollection ' + title, artist, yearPublished, trackName, trackDuration);
-  let tracks = {name: trackName, duration: trackDuration};
+function addToCollection (title, artist, yearPublished, tracks){
+  console.log('in addToCollection ' + title, artist, yearPublished, tracks);
 collection.push({title: title, artist: artist, yearPublished: yearPublished, tracks: tracks});
 return collection[collection.length - 1];
 }
 
-console.log(addToCollection('Selected Public Works Vol. 6', 'Lightbath', 2020, 'song1', '4:00'));
+console.log(addToCollection('Selected Public Works Vol. 6', 'Lightbath', 2020, [['song1', '4:00'], ['song2', '3:59'], ['song3', '3:30']]));
 console.log(addToCollection('Selected Public Works Vol. 5', 'Lightbath', 2020));
 console.log(addToCollection('Gunfighter Ballads and Trail Songs', 'Marty Robbins', 1959));
 console.log(addToCollection('Selected Public Works Vol. 4', 'Lightbath', 2019));
