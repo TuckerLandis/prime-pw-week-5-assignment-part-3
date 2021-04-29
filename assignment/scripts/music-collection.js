@@ -2,9 +2,10 @@ console.log('***** Music Collection *****');
 
 let collection = [];
 
-function addToCollection (title, artist, yearPublished){
-  console.log('in addToCollection ' + title, artist, yearPublished);
-collection.push({title: title, artist: artist, yearPublished: yearPublished});
+function addToCollection (title, artist, yearPublished, trackName, trackDuration){
+  console.log('in addToCollection ' + title, artist, yearPublished, trackName, trackDuration);
+  let tracks = {name: trackName, duration: trackDuration};
+collection.push({title: title, artist: artist, yearPublished: yearPublished, tracks: tracks});
 return collection[collection.length - 1];
 }
 
