@@ -13,8 +13,6 @@ console.log(addToCollection('Selected Public Works Vol. 5', 'Lightbath', 2020, [
 console.log(addToCollection('Gunfighter Ballads and Trail Songs', 'Marty Robbins', 1959, [{name: 'song5', duration: '3:14'}, {name: 'song6', duration: '4:10'}]));
 console.log(addToCollection('Selected Public Works Vol. 4', 'Lightbath', 2019, [{name: 'song7', duration: '3:14'}, {name: 'song8', duration: '1:56'}]));
 console.log(addToCollection('Toy Beats', 'Splitta', 2020, [{name: 'song9', duration: '3:45'}, {name: 'song10', duration: '4:24'}]));
-console.log(addToCollection('Nice Dog', 'Jon Corbett', 2019, [{name: 'song11', duration: '3:26'}, {name: 'song12', duration: '4:30'}]));
-console.log(addToCollection('Dust Bowl Ballads', 'Woody Guthrie', 1940, [{name: 'song13', duration: '3:26'}, {name: 'song14', duration: '4:30'}]));
 console.log(addToCollection('déchets inutiles', 'Watson', 2020, [{name: 'song15', duration: '3:26'}, {name: 'song16', duration: '4:30'}]));
 console.log(collection);
 
@@ -51,31 +49,34 @@ function findByArtist(artist){
 } // end findByArtist
 
 //testing findByArtist
-console.log(findByArtist('Splitta'));
-console.log(findByArtist('Lightbath'));
-console.log(findByArtist('Harrison BDP'));
+console.log('expect album object', findByArtist('Splitta'));
+console.log('expect album object', findByArtist('Lightbath'));
+console.log('expect album object', findByArtist('Harrison BDP'));
 
 function search( artist, year, trackName ){
   console.log('Searching...', artist, year, trackName);
 let results = [];
-for (let i of collection) {
-  if (artist === i.artist && year ===i.yearPublished && trackName == i.tracks.name) {
-    results.push(i);
+for (i = 0; i < collection.length; i++) {
+for (j = 0; j < collection[i].tracks.length; j++) {
+if (artist === collection[i].artist && year === collection[i].yearPublished && trackName === collection[i].tracks[j].name) {
+    results.push(collection[i]);
   } // end if
-  else if (artist == ' ' || year == ' ') {
+
+  else if (artist == ' ' || year == ' ' || trackName == ' ') {
     console.log('Missing search input, here is the collection');
     return collection;
-  }
+  } // end else if
+} // end loop
 } // end loop
 return results;
 } // end function
 
 //testing search
-console.log(search('Splitta', 2020)); // 1 matching object
-console.log(search('Lightbath', 2020)); // 2 matching objects
-console.log(search( ' ', 2020)); // empty search value
-console.log(search('Cat Soup', 2020)); // not found
+console.log('expect 1 album object', search('Splitta', 2020, 'song9')); // 1 matching object
+console.log('expect 2 album objects', search('Lightbath', 2020)); // 2 matching objects
+console.log('expect missing input', search( ' ', 2020)); // empty search value
+console.log('expect empty array', search('Cat Soup', 2020)); // not found
 //testing search after adding trackName
-console.log(search('Lightbath', 2020, 'song1'));
 
-console.log(collection);
+console.log(search('Lightbath', 2020, 'song1'), 'expect album return');
+console.log(search('Marty Robbins', 1959, 'song6'), 'expect album return');
