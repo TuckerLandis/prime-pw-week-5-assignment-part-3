@@ -1,15 +1,14 @@
 console.log('***** Music Collection *****');
 
 let collection = [];
-let pushTracks = [];
 
-function addToCollection (title, artist, yearPublished, tracks){
-  console.log('in addToCollection ' + title, artist, yearPublished, tracks);
-collection.push({title: title, artist: artist, yearPublished: yearPublished, tracks: tracks});
+function addToCollection (title, artist, yearPublished){
+  console.log('in addToCollection ' + title, artist, yearPublished);
+collection.push({title: title, artist: artist, yearPublished: yearPublished});
 return collection[collection.length - 1];
 }
 
-console.log(addToCollection('Selected Public Works Vol. 6', 'Lightbath', 2020, [['song1', '4:00'], ['song2', '3:59'], ['song3', '3:30']]));
+console.log(addToCollection('Selected Public Works Vol. 6', 'Lightbath', 2020, 'song1', '4:00'));
 console.log(addToCollection('Selected Public Works Vol. 5', 'Lightbath', 2020));
 console.log(addToCollection('Gunfighter Ballads and Trail Songs', 'Marty Robbins', 1959));
 console.log(addToCollection('Selected Public Works Vol. 4', 'Lightbath', 2019));
@@ -29,22 +28,6 @@ function showCollection(array) {
 } // end showCollection
 
 showCollection(collection);
-
-/*
-function findByArtist( artist ) {
-  console.log('Finding Artist: ' + artist);
-  let findArr = [];
-  for (let album of collection) {
-    if (collection.artist == artist) {
-      findArr.push(album);
-      return findArr;
-    } // end if
-    else {
-      return findArr;
-    } // end else
-  } //end loop
-} // end findByArtist*/
-
 
 function findByArtist(artist){
   console.log('Finding Artist: ' + artist);
@@ -70,15 +53,14 @@ console.log(findByArtist('Lightbath'));
 console.log(findByArtist('Harrison BDP'));
 
 function search( artist, year ){
-  console.log('in search', artist, year);
+  console.log('Searching...', artist, year);
 let results = [];
-let sA = artist;
-let sY = year;
 for (let i of collection) {
-  if (sA === i.artist && sY ===i.yearPublished) {
+  if (artist === i.artist && year ===i.yearPublished) {
     results.push(i);
   } // end if
-  else if (sA == ' ' || sY == ' ') {
+  else if (artist == ' ' || year == ' ') {
+    console.log('Missing search input, here is the collection');
     return collection;
   }
 } // end loop

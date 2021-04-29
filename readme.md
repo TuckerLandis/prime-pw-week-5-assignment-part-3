@@ -41,21 +41,21 @@ x Add a function named `findByArtist`. This function should:
   x Loop through the `collection` and add any objects with a matching artist to the array.
   x Return the array with the matching results. If no results are found, return an empty array.
 
-- Test the `findByArtist` function. Make sure to test with an artist you know is in the collection, as well as an artist you know is not in your collection. Check that for artists with multiple matches, all are found.
+Test the `findByArtist` function. Make sure to test with an artist you know is in the collection, as well as an artist you know is not in your collection. Check that for artists with multiple matches, all are found.
 
 > When testing your functions, write all tests in the JavaScript file!
 
 
 ### Stretch goals
 
-- Create a function called `search`. This function should:
-  - Take an input parameter for a search criteria object. The search criteria might look sosomething like this:
+x Create a function called `search`. This function should:
+  x Take an input parameter for a search criteria object. The search criteria might look something like this:
   ```
   { artist: 'Ray Charles', year: 1957 }
   ```
-  - Return a new array of all items in the `collection` matching *all* of the search criteria.
-  - If no results are found, return an empty array.
-  - If there is no search object or an empty search object provided as input, then return all albums in the `collection`.
+  x Return a new array of all items in the `collection` matching *all* of the search criteria.
+  x If no results are found, return an empty array.
+  x If there is no search object or an empty search object provided as input, then return all albums in the `collection`.
 
 - Add an array of `tracks` to your album objects. Each track should have a `name` and `duration`. You will need to update the functions to support this new property:
   - Update the `addToCollection` function to also take an input parameter for the array of tracks.
