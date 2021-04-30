@@ -24,9 +24,9 @@ for (i = 0; i < array.length-1; i++) {
   let tracklist = a[i].tracks;
 for (j = 0; j < tracklist.length; j++) {
     console.log(tracklist[j].name + ': ' + tracklist[j].duration);
-  }
-}
-}
+  } // end inner loop
+} // end outer loop
+} // end showCollection
 
 showCollection(collection);
 
@@ -53,6 +53,7 @@ console.log('expect album object', findByArtist('Splitta'));
 console.log('expect album object', findByArtist('Lightbath'));
 console.log('expect album object', findByArtist('Harrison BDP'));
 
+/* This doesn't answer the question! gonna try again using object input 4/29 thanks to patrick showing us methods and etc
 function search( artist, year, trackName ){
   console.log('Searching...', artist, year, trackName);
 let results = [];
@@ -61,7 +62,6 @@ for (j = 0; j < collection[i].tracks.length; j++) {
 if (artist === collection[i].artist && year === collection[i].yearPublished && trackName === collection[i].tracks[j].name) {
     results.push(collection[i]);
   } // end if
-
   else if (artist == ' ' || year == ' ' || trackName == ' ') {
     console.log('Missing search input, here is the collection');
     return collection;
@@ -69,7 +69,12 @@ if (artist === collection[i].artist && year === collection[i].yearPublished && t
 } // end loop
 } // end loop
 return results;
-} // end function
+} // end function*/
+
+function search(){
+  //new function using object input and array methods
+}
+
 
 //testing search
 console.log('expect 1 album object', search('Splitta', 2020, 'song9')); // 1 matching object
