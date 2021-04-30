@@ -1,25 +1,40 @@
 console.log('***** Music Collection *****');
 
+// declaring collection as empty array
 let collection = [];
 
+// function to add album object to collection
 function addToCollection (title, artist, yearPublished, tracks){
-  console.log('in addToCollection ' + title, artist, yearPublished, tracks);
+  console.log( 'Adding to collection...' + title, artist, yearPublished, tracks);
   collection.push({
     title: title,
     artist: artist,
     yearPublished: yearPublished,
     tracks: tracks});
   return collection[collection.length - 1];
-}
+} // end addToCollection
 
+// adding albums
 console.log(addToCollection('Selected Public Works Vol. 6', 'Lightbath', 2020, [{name: 'song1', duration: '3:59'}, {name: 'song2', duration: '4:00'}]));
 console.log(addToCollection('Selected Public Works Vol. 5', 'Lightbath', 2020, [{name: 'song3', duration: '3:26'}, {name: 'song4', duration: '4:30'}]));
 console.log(addToCollection('Gunfighter Ballads and Trail Songs', 'Marty Robbins', 1959, [{name: 'song5', duration: '3:14'}, {name: 'song6', duration: '4:10'}]));
 console.log(addToCollection('Selected Public Works Vol. 4', 'Lightbath', 2019, [{name: 'song7', duration: '3:14'}, {name: 'song8', duration: '1:56'}]));
 console.log(addToCollection('Toy Beats', 'Splitta', 2020, [{name: 'song9', duration: '3:45'}, {name: 'song10', duration: '4:24'}]));
 console.log(addToCollection('déchets inutiles', 'Watson', 2020, [{name: 'song15', duration: '3:26'}, {name: 'song16', duration: '4:30'}]));
-console.log(collection);
 
+// logging collection
+console.log('My album collection contains...', collection);
+
+// function to show collection using object deconstruction and forEach, failed
+/*
+function showCollection(array){
+  array.forEach(element => {
+      let {title: showTitle, artist: showArtist, yearPublished: showYearPublished} = array;
+      console.log(showTitle + ' by ' + showArtist + ' published in: ' + showYearPublished);
+  }); // end forEach
+}*/
+
+// succesful function to show collection and log amount of albums
 function showCollection(array) {
   let a = array;
   console.log('i have ' + array.length + ' records: ');
@@ -32,90 +47,57 @@ for (j = 0; j < tracklist.length; j++) {
 } // end outer loop
 } // end showCollection
 
-showCollection(collection);
 
-function findByArtist(artist){
-  console.log('Finding Artist: ' + artist);
-  let i = 0;
-  let foundArr = [];
-    while (i < (collection.length - 1)) {
-    let p = collection[i];
-    let foundArtist = collection[i].artist;
-    if (foundArtist === artist) {
-      foundArr.push(p);
-      i++;
+showCollection(collection);
+// calling showCollection to test
+
+function findByArtist(artist) {
+  console.log('Finding:', artist);
+  let findResults = [];
+  collection.forEach(album => {
+    if (album.artist === artist) {
+      findResults.push(album);
     } // end if
-    else {
-  i++;
-    } // end else
-  } // end loop
-  return foundArr;
+  }); // end forEach
+  console.log('Found ' + findResults.length + ' album(s) by', artist);
+  return findResults;
 } // end findByArtist
 
-//testing findByArtist
-console.log('-expect album object-', findByArtist('Splitta'));
-console.log('-expect album object-', findByArtist('Lightbath'));
-console.log('-expect empty array-', findByArtist('Harrison BDP'));
+// testing findByArtist
+console.log('--expect 3--', findByArtist('Lightbath'));
+console.log('--expect 1--', findByArtist('Splitta'));
+console.log('--expect 0--', findByArtist('Patsy Cline'));
 
-/* This doesn't answer the question! gonna try again using object input 4/29 thanks to patrick showing us methods and etc
-
-function search( artist, year, trackName ){
-  console.log('Searching...', artist, year, trackName);
-let results = [];
-for (i = 0; i < collection.length; i++) {
-for (j = 0; j < collection[i].tracks.length; j++) {
-if (artist === collection[i].artist && year === collection[i].yearPublished && trackName === collection[i].tracks[j].name) {
-    results.push(collection[i]);
-  } // end if
-  else if (artist == ' ' || year == ' ' || trackName == ' ') {
-    console.log('Missing search input, here is the collection');
-    return collection;
-  } // end else if
-} // end loop
-} // end loop
-return results;
-} // end function*/
-
-
-function search(searchedObj){
-  console.log('Searching...', searchedObj);
-  const results = [];
-
-  collection.forEach((obj) => {
-    let matched;
-    let trx = Object.tracks;
-    for (let key of Object.keys(searchedObj)) {
-      matched = obj[key] === searchedObj[key];
-      if (!matched) {
-        break;
+// function to search via object values
+function search(searched) {
+  console.log('Searching...', searched);
+  // searchResults is an empty array
+  let searchResults = [];
+  // foreach loop to compare searched key values to collection key values
+  collection.forEach((album) => {
+    let match;
+    for (let key of Object.keys(searched)) {
+      match = album[key] === searched[key]; // "let match be true if album key value === searched key value"
+      if (!match) {
+        break; // breaks out to line 88 because nothing matches
       } // end if
-    } // end for loop
-    for (let key of trx.name(searchedObj.tracks)) {
-      matched = obj.tracks[key] === searchedObj.tracks[key];
-    } // end track search
-    if (matched) {
-      results.push(obj);
+    } // end for of loop
+    if (match) {
+      searchResults.push(album);
     } // end if
-  }); // end callback
-
-if (results.length === 0) {
-  console.log('Your search returned no results, here is the collection');
+  }); // end forEach
+if (!searched) {
+  console.log('Your search had no input', collection);
   return collection;
-} // end if
-  else {
-  console.log('Your search returned the following album');
-  return results;
-} // end else
+} else {
+  console.log('Found ', searchResults.length, ' album(s)');
+  return searchResults;
+  } // end else
 } // end function
 
-
-
-
-//
-//    for (let key of Object.keys(searchedObj.tracks)) {
-//
-//testing search
-console.log('-expect album result-', search({artist: 'Splitta', yearPublished: 2020,}));
-console.log('-expect empty array result-', search({artist: 'Vicente Fernandez'}));
-console.log('-expect 3 album results-', search({artist: 'Lightbath'}));
-console.log('-expect 1 album result-', search(({name: 'song1' }))); // i knew this wouldn't work, i'm assuming i have to put a nested for loop in my search function i honestly don't understand where or how right now, gonna circle back
+console.log(search(''));
+console.log(search({artist: 'Splitta'})); // 1 match
+console.log(search({artist: 'Lightbath'})); // 3 matches
+console.log(search({artist: 'Lightbath', yearPublished: 2020})); // 2 matches
+console.log(search({artist: 'Surf Curse'})); // no matches
+console.log(search({title:'Gunfighter Ballads and Trail Songs', artist: 'Marty Robbins', yearPublished: 1959, })); // 1 match
