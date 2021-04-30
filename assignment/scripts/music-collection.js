@@ -4,7 +4,11 @@ let collection = [];
 
 function addToCollection (title, artist, yearPublished, tracks){
   console.log('in addToCollection ' + title, artist, yearPublished, tracks);
-  collection.push({title: title, artist: artist, yearPublished: yearPublished, tracks: tracks});
+  collection.push({
+    title: title,
+    artist: artist,
+    yearPublished: yearPublished,
+    tracks: tracks});
   return collection[collection.length - 1];
 }
 
@@ -49,11 +53,12 @@ function findByArtist(artist){
 } // end findByArtist
 
 //testing findByArtist
-console.log('expect album object', findByArtist('Splitta'));
-console.log('expect album object', findByArtist('Lightbath'));
-console.log('expect album object', findByArtist('Harrison BDP'));
+console.log('-expect album object-', findByArtist('Splitta'));
+console.log('-expect album object-', findByArtist('Lightbath'));
+console.log('-expect empty array-', findByArtist('Harrison BDP'));
 
 /* This doesn't answer the question! gonna try again using object input 4/29 thanks to patrick showing us methods and etc
+
 function search( artist, year, trackName ){
   console.log('Searching...', artist, year, trackName);
 let results = [];
@@ -71,17 +76,46 @@ if (artist === collection[i].artist && year === collection[i].yearPublished && t
 return results;
 } // end function*/
 
-function search(){
-  //new function using object input and array methods
-}
+
+function search(searchedObj){
+  console.log('Searching...', searchedObj);
+  const results = [];
+
+  collection.forEach((obj) => {
+    let matched;
+    let trx = Object.tracks;
+    for (let key of Object.keys(searchedObj)) {
+      matched = obj[key] === searchedObj[key];
+      if (!matched) {
+        break;
+      } // end if
+    } // end for loop
+    for (let key of trx.name(searchedObj.tracks)) {
+      matched = obj.tracks[key] === searchedObj.tracks[key];
+    } // end track search
+    if (matched) {
+      results.push(obj);
+    } // end if
+  }); // end callback
+
+if (results.length === 0) {
+  console.log('Your search returned no results, here is the collection');
+  return collection;
+} // end if
+  else {
+  console.log('Your search returned the following album');
+  return results;
+} // end else
+} // end function
 
 
+
+
+//
+//    for (let key of Object.keys(searchedObj.tracks)) {
+//
 //testing search
-console.log('expect 1 album object', search('Splitta', 2020, 'song9')); // 1 matching object
-console.log('expect 2 album objects', search('Lightbath', 2020)); // 2 matching objects
-console.log('expect missing input', search( ' ', 2020)); // empty search value
-console.log('expect empty array', search('Cat Soup', 2020)); // not found
-//testing search after adding trackName
-
-console.log(search('Lightbath', 2020, 'song1'), 'expect album return');
-console.log(search('Marty Robbins', 1959, 'song6'), 'expect album return');
+console.log('-expect album result-', search({artist: 'Splitta', yearPublished: 2020,}));
+console.log('-expect empty array result-', search({artist: 'Vicente Fernandez'}));
+console.log('-expect 3 album results-', search({artist: 'Lightbath'}));
+console.log('-expect 1 album result-', search(({name: 'song1' }))); // i knew this wouldn't work, i'm assuming i have to put a nested for loop in my search function i honestly don't understand where or how right now, gonna circle back
