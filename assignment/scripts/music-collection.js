@@ -42,7 +42,7 @@ for (i = 0; i < array.length-1; i++) {
   console.log(a[i].title + ' by ' + a[i].artist +', published in ' + a[i].yearPublished);
   let tracklist = a[i].tracks;
 for (j = 0; j < tracklist.length; j++) {
-    console.log(tracklist[j].name + ': ' + tracklist[j].duration);
+    console.log(j+1+'.', tracklist[j].name + ': ' + tracklist[j].duration);
   } // end inner loop
 } // end outer loop
 } // end showCollection
