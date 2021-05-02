@@ -33,13 +33,13 @@ v Add a function named `showCollection`. This function should:
   v Console.log the number of items in the array.
   v Loop over the array and console.log each album's information formatted like: `TITLE by ARTIST, published in YEAR`.
 
-x Test the `showCollection` function.
+v Test the `showCollection` function.
 
-x Add a function named `findByArtist`. This function should:
-  x Take in `artist` (a string) parameter
-  x Create an array to hold any results, empty to start
-  x Loop through the `collection` and add any objects with a matching artist to the array.
-  x Return the array with the matching results. If no results are found, return an empty array.
+v Add a function named `findByArtist`. This function should:
+  v Take in `artist` (a string) parameter
+  v Create an array to hold any results, empty to start
+  v Loop through the `collection` and add any objects with a matching artist to the array.
+  v Return the array with the matching results. If no results are found, return an empty array.
 
 Test the `findByArtist` function. Make sure to test with an artist you know is in the collection, as well as an artist you know is not in your collection. Check that for artists with multiple matches, all are found.
 
@@ -53,14 +53,14 @@ x Create a function called `search`. This function should:
   ```
   { artist: 'Ray Charles', year: 1957 }
   ```
-  x Return a new array of all items in the `collection` matching *all* of the search criteria.
-  x If no results are found, return an empty array.
-  x If there is no search object or an empty search object provided as input, then return all albums in the `collection`.
+  v Return a new array of all items in the `collection` matching *all* of the search criteria.
+  v If no results are found, return an empty array.
+  v If there is no search object or an empty search object provided as input, then return all albums in the `collection`.
 
 x Add an array of `tracks` to your album objects. Each track should have a `name` and `duration`. You will need to update the functions to support this new property:
-  x Update the `addToCollection` function to also take an input parameter for the array of tracks.
+  v Update the `addToCollection` function to also take an input parameter for the array of tracks.
   - Update `search` to allow a `trackName` search criteria.
-  x Update the `showCollection` function to display the list of tracks for each album with its name and duration.
+  v Update the `showCollection` function to display the list of tracks for each album with its name and duration.
 ```
     TITLE by ARTIST, published in YEAR:
     1. NAME: DURATION
