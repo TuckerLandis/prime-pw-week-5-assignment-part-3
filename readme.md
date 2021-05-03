@@ -53,9 +53,9 @@ x Create a function called `search`. This function should:
   ```
   { artist: 'Ray Charles', year: 1957 }
   ```
-  v Return a new array of all items in the `collection` matching *all* of the search criteria.
-  v If no results are found, return an empty array.
-  v If there is no search object or an empty search object provided as input, then return all albums in the `collection`.
+  x Return a new array of all items in the `collection` matching *all* of the search criteria.
+  x If no results are found, return an empty array.
+  x If there is no search object or an empty search object provided as input, then return all albums in the `collection`.
 
 x Add an array of `tracks` to your album objects. Each track should have a `name` and `duration`. You will need to update the functions to support this new property:
   v Update the `addToCollection` function to also take an input parameter for the array of tracks.

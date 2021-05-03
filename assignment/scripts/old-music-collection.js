@@ -57,7 +57,7 @@ console.log('-expect album object-', findByArtist('Splitta'));
 console.log('-expect album object-', findByArtist('Lightbath'));
 console.log('-expect empty array-', findByArtist('Harrison BDP'));
 
-/* This doesn't answer the question! gonna try again using object input 4/29 thanks to patrick showing us methods and etc
+/* This doesn't answer the question! gonna try again using object input 4/29 thanks to james showing us methods and etc
 
 function search( artist, year, trackName ){
   console.log('Searching...', artist, year, trackName);
@@ -108,11 +108,6 @@ if (results.length === 0) {
 } // end else
 } // end function
 
-
-
-
-//
-//    for (let key of Object.keys(searchedObj.tracks)) {
 //
 //testing search
 console.log('-expect album result-', search({artist: 'Splitta', yearPublished: 2020,}));
