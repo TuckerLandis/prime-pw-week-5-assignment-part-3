@@ -77,6 +77,7 @@ function search(searched) {
   collection.forEach((album) => {
     let match;
     for (let key of Object.keys(searched)) {
+      // for loop within function, turning keys to an iterable array
       match = album[key] === searched[key]; // "let match be true if album key value === searched key value"
       if (!match) {
         break; // breaks out to line 88 because nothing matches
@@ -101,3 +102,5 @@ console.log(search({artist: 'Lightbath'})); // 3 matches
 console.log(search({artist: 'Lightbath', yearPublished: 2020})); // 2 matches
 console.log(search({artist: 'Surf Curse'})); // no matches
 console.log(search({title:'Gunfighter Ballads and Trail Songs', artist: 'Marty Robbins', yearPublished: 1959, })); // 1 match
+console.log(search({title: 'Toy Beats'})); // 1 match title
+console.log(search({yearPublished: 1959})); // 1 match year
